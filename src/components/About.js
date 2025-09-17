@@ -11,7 +11,7 @@ const About = () => {
           {/* Professional avatar with zen aesthetic */}
           <div className="relative w-40 h-40 mx-auto mb-8">
             <div className="w-full h-full bg-gradient-to-br from-teal-600 via-slate-500 to-emerald-600 rounded-full flex items-center justify-center text-6xl shadow-2xl gentleHover">
-              🏎️
+              👨🏻‍💻
             </div>
             {/* Subtle zen ripple effect */}
             <div className="absolute inset-0 rounded-full border border-transparent bg-gradient-to-r from-teal-400 to-emerald-500 bg-clip-border opacity-30 animate-ping" style={{animationDuration: '3s'}}></div>
