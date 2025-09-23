@@ -1,7 +1,7 @@
 // src/data/portfolioData.js
 
 export const personalInfo = {
-    name: "Yoruan Orta",
+    name: "Yoruan Orta Bonilla",
     role: "Developer",
     email: "nauroy71106@gmail.com",
     github: "https://github.com/YoruanOrta",

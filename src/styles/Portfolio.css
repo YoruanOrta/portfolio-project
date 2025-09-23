@@ -1,18 +1,18 @@
-/* src/styles/Portfolio.css - Fixed Torii Background Theme */
+/* src/styles/Portfolio.css - Modern Dark Portfolio */
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* CSS Variables matching the actual torii image colors */
+/* CSS Variables for modern dark theme */
 :root {
-  --torii-gray: #6B7280;
-  --water-teal: #0F766E;
-  --misty-blue: #475569;
-  --soft-white: #F1F5F9;
-  --dark-slate: #1E293B;
-  --accent-teal: #14B8A6;
-  --muted-green: #059669;
+  --dark-bg: #1a1a1a;
+  --darker-bg: #0f0f0f;
+  --card-bg: #2a2a2a;
+  --accent-green: #00d084;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #6a6a6a;
 }
 
 * {
@@ -25,129 +25,374 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
 }
 
-/* Torii background - now using imported image */
-.toriiBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+/* Modern dark background */
+.modernBackground {
+  min-height: 100vh;
+  background-color: var(--dark-bg);
 }
 
-.toriiBackground::before {
+/* Navigation */
+.modernNav {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
+}
+
+.navItemActive {
+  color: var(--accent-green);
+  position: relative;
+}
+
+.navItemActive::after {
   content: '';
   position: absolute;
-  top: 0;
+  bottom: -8px;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: -1;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-green);
+  border-radius: 1px;
 }
 
-/* Main animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Hero Section */
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
 }
 
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+.heroContent h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
-.fadeInUp {
-  animation: fadeInUp 0.8s ease-out forwards;
+.heroContent h2 {
+  font-size: 1.5rem;
+  color: var(--accent-green);
+  margin-bottom: 2rem;
+  font-weight: 300;
 }
 
-.gentleHover:hover {
-  animation: gentleFloat 2s ease-in-out infinite;
+.heroContent p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
-/* Text gradients matching the torii image */
-.toriiGradient {
-  background: linear-gradient(135deg, 
-    var(--accent-teal) 0%, 
-    var(--water-teal) 50%, 
-    var(--misty-blue) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Profile Image */
+.profileImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, var(--accent-green), #00a86b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  box-shadow: 0 20px 40px rgba(0, 208, 132, 0.2);
 }
 
-.zenGradient {
-  background: linear-gradient(90deg, 
-    var(--accent-teal) 0%, 
-    var(--muted-green) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
-/* Enhanced glassmorphism for better readability */
-.toriiGlass {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+.primaryButton {
+  background: var(--accent-green);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
-.toriiGlass:hover {
-  border-color: rgba(20, 184, 166, 0.4);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 12px 40px 0 rgba(0, 0, 0, 0.4),
-    0 0 30px 0 rgba(20, 184, 166, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+.primaryButton:hover {
+  background: #00b870;
+  transform: translateY(-1px);
 }
 
-/* Professional cards with torii theme */
-.toriiCard {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0);
-  position: relative;
+.secondaryButton {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 12px 24px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.toriiCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 
-    0 20px 40px rgba(15, 118, 110, 0.25),
-    0 0 20px rgba(20, 184, 166, 0.15);
+.secondaryButton:hover {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
 }
 
-/* Progress bars with zen aesthetic */
-.zenProgressBar {
-  transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background: linear-gradient(90deg, 
-    var(--muted-green) 0%, 
-    var(--accent-teal) 70%, 
-    var(--water-teal) 100%
-  );
-  position: relative;
+/* Sections */
+.modernSection {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
+/* About Section */
+.aboutContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aboutContent p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.contactInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.contactItem {
+  text-align: center;
+  padding: 1rem;
+}
+
+.contactItem h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.contactItem p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.contactDot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+/* Services/What I Do Section */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.serviceCard {
+  background: var(--card-bg);
+  padding: 2rem;
   border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-green);
+}
+
+.serviceCard.active {
+  border-color: var(--accent-green);
+  border-width: 2px;
+}
+
+.serviceIcon {
+  font-size: 2rem;
+  color: var(--accent-green);
+  margin-bottom: 1rem;
+}
+
+.serviceCard h3 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.serviceCard p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Skills Section */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.skillItem {
+  text-align: center;
+  padding: 1rem;
+}
+
+.skillPercentage {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.skillName {
+  color: var(--accent-green);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* Projects Section */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.projectCard {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.projectIcon {
+  background: var(--darker-bg);
+  padding: 2rem;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.projectContent {
+  padding: 1.5rem;
+}
+
+.projectTitle {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.projectDescription {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.techTag {
+  background: rgba(0, 208, 132, 0.1);
+  color: var(--accent-green);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.projectLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.projectLink:hover {
+  color: var(--accent-green);
+}
+
+/* Skills Section - Old Style with New Colors */
+.skillsOldStyle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.skillCard {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.skillCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-green);
+}
+
+.skillProgressBar {
+  background: linear-gradient(90deg, 
+    var(--accent-green) 0%, 
+    #00b870 70%, 
+    #009963 100%
+  );
+  position: relative;
+  border-radius: 6px;
   overflow: hidden;
 }
 
-.zenProgressBar::after {
+.skillProgressBar::after {
   content: '';
   position: absolute;
   top: 0;
@@ -163,141 +408,49 @@ body {
     transparent 75%
   );
   background-size: 15px 15px;
-  animation: zenFlow 3s linear infinite;
+  animation: skillFlow 3s linear infinite;
 }
 
-@keyframes zenFlow {
+@keyframes skillFlow {
   0% { transform: translateX(-15px); }
   100% { transform: translateX(15px); }
 }
 
-/* Navigation with torii theme */
-.toriiNav {
-  background: rgba(30, 41, 59, 0.9);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--accent-teal);
+/* Contact Cards Grid */
+.contactCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.navItemActive {
-  color: var(--accent-teal);
-  position: relative;
-}
-
-.navItemActive::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    var(--accent-teal), 
-    var(--muted-green)
-  );
-  border-radius: 1px;
-}
-
-/* Serene buttons */
-.zenButton {
-  background: linear-gradient(135deg, var(--accent-teal), var(--muted-green));
-  border: none;
-  color: var(--soft-white);
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
-}
-
-.zenButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.2), 
-    transparent
-  );
-  transition: left 0.6s;
-}
-
-.zenButton:hover::before {
-  left: 100%;
-}
-
-.zenButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(20, 184, 166, 0.4);
-}
-
-/* Project cards with better readability */
-.projectToriiCard {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.projectToriiCard:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(20, 184, 166, 0.3);
-  box-shadow: 
-    0 20px 40px 0 rgba(0, 0, 0, 0.3),
-    0 0 30px 0 rgba(20, 184, 166, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Contact cards with torii theme */
-.contactToriiCard {
-  background: rgba(255, 255, 255, 0.12);
+.contactGlassCard {
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  text-align: center;
   text-decoration: none;
+  transition: all 0.4s ease;
   display: block;
-  cursor: pointer;
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.contactToriiCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(20, 184, 166, 0.3);
-  box-shadow: 
-    0 20px 40px 0 rgba(0, 0, 0, 0.25),
-    0 0 30px 0 rgba(20, 184, 166, 0.2);
+.contactGlassCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-green);
+  box-shadow: 0 20px 40px rgba(0, 208, 132, 0.2);
 }
 
-/* Icon containers */
-.toriiIconContainer {
-  position: relative;
+.contactIconContainer {
+  margin-bottom: 1.5rem;
+}
+
+.contactIcon {
   width: 80px;
   height: 80px;
-  margin: 0 auto 1.5rem auto;
-}
-
-.toriiIcon {
-  width: 100%;
-  height: 100%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -305,165 +458,95 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 2;
+  margin: 0 auto;
+  color: var(--accent-green);
   transition: all 0.3s ease;
-  color: var(--accent-teal);
 }
 
-.toriiIconGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle, 
-    rgba(20, 184, 166, 0.2) 0%,
-    transparent 70%
-  );
-  border-radius: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.toriiCard:hover .toriiIconGlow,
-.contactToriiCard:hover .toriiIconGlow,
-.projectToriiCard:hover .toriiIconGlow {
-  opacity: 1;
-}
-
-.toriiCard:hover .toriiIcon,
-.contactToriiCard:hover .toriiIcon,
-.projectToriiCard:hover .toriiIcon {
+.contactGlassCard:hover .contactIcon {
   background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(20, 184, 166, 0.4);
+  border-color: var(--accent-green);
   transform: scale(1.05);
   color: white;
 }
 
-/* Technology badges */
-.toriiTechBadge {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(20, 184, 166, 0.2);
-  color: var(--accent-teal);
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.toriiTechBadge:hover {
-  background: rgba(20, 184, 166, 0.15);
-  border-color: rgba(20, 184, 166, 0.4);
-  color: white;
-  transform: translateY(-1px);
-}
-
-/* Text styling for better readability */
 .contactTitle {
   font-size: 1.25rem;
   font-weight: 600;
   color: white;
   margin-bottom: 0.5rem;
-  text-align: center;
 }
 
 .contactDescription {
-  color: rgba(241, 245, 249, 0.8);
+  color: var(--text-secondary);
   font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
   text-align: center;
-}
-
-.projectTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.projectDescription {
-  color: rgba(241, 245, 249, 0.9);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.projectContent {
-  position: relative;
-  z-index: 2;
-}
-
-.technologyBadges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.projectLinks {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.projectLink {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(241, 245, 249, 0.9);
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
+  padding: 2rem;
+  border-top: 1px solid #333;
+  color: var(--text-muted);
   font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
 }
 
-.projectLink:hover {
-  background: rgba(20, 184, 166, 0.1);
-  border-color: rgba(20, 184, 166, 0.3);
-  color: white;
-  transform: translateY(-2px);
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Responsive design */
+.fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .heroContent h1 {
+    font-size: 2.5rem;
   }
   
-  .toriiBackground {
-    background-attachment: scroll;
+  .profileImage {
+    width: 150px;
+    height: 150px;
+    font-size: 3rem;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modernSection {
+    padding: 3rem 1rem;
   }
 }
 
-/* Scrollbar with torii theme */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark-slate);
-  border-radius: 4px;
+  background: var(--darker-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-teal), var(--muted-green));
+  background: var(--accent-green);
   border-radius: 4px;
-  border: 1px solid var(--dark-slate);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--muted-green), var(--water-teal));
+  background: #00b870;
 }
