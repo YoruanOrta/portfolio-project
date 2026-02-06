@@ -1,0 +1,10 @@
+{
+    "github": {
+      "silent": true
+    },
+    "build": {
+      "env": {
+        "CI": "false"
+      }
+    }
+  }
