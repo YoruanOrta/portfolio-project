@@ -111,7 +111,7 @@ const App: React.FC = () => {
             <div className="contactItem">
               <div className="contactDot"></div>
               <h4>Phone</h4>
-              <p>787-462-5813</p>
+              <p>787-951-3224</p>
             </div>
           </div>
         </div>
